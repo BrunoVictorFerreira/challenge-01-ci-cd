@@ -27,6 +27,8 @@ build-images:
     DOCKER_TLS_CERTDIR: "/certs"
 
   before_script:
+    - echo $REGISTRY_USER
+    - echo $REGISTRY_PASS
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
 
   script:

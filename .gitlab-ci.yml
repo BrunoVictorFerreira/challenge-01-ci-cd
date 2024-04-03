@@ -1,6 +1,7 @@
 stages:
   - test
   - build
+  - deploy
 
 realizar_testes:
   stage: test
@@ -34,3 +35,12 @@ build-images:
   script:
     - docker build -t victorbruno221/gitlab-cicd-node:1.0 .
     - docker push victorbruno221/gitlab-cicd-node:1.0
+
+deploy_dev:
+  stage: deploy
+  needs:
+    - build_images
+  tags:
+    - gcp
+  script:
+    - docker run -d --name nodeapp -p 3000:30000 victorbruno221/gitlab-cicd-node:1.0

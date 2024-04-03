@@ -28,8 +28,8 @@ build-images:
 
   before_script:
     - echo $REGISTRY_USER
-    - echo $REGISTRY_PASS
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    - echo $REGISTRY_PASS_HUB
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS_HUB
 
   script:
     - docker build -t victorbruno221/gitlab-cicd-node:1.0 .
